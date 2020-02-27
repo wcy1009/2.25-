@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="assets/css/elementui.css">
+  <title>Demo</title>
+</head>
+
+<body>
+  <div id="app">
+    <el-select v-model="selectedCourseId" placeholder="请选择課程">
+      <el-option v-for="item in courses" :key="item.courseId" :label="item.name" :value="item.courseId">
+      </el-option>
+    </el-select>
+    <el-select v-model="selectedClazzId" placeholder="请选择班級">
+      <el-option v-for="item in clazzes" :key="item.clazzId" :label="item.name" :value="item.clazzId">
+      </el-option>
+    </el-select>
+    <el-select v-model="selectedTeacherId" placeholder="请选择讲师">
+      <el-option v-for="item in teachers" :key="item.teacherId" :label="item.name" :value="item.teacherId">
+      </el-option>
+    </el-select>
+    <el-input type="number" v-model="selectedCourseUnit" placeholder="请输入课程单元"></el-input>
+      <el-date-picker v-model="deadTime" type="date" placeholder="选择收作业日期">
+      </el-date-picker>
+      <el-input type="textarea" v-model="abstractContent" placeholder="请输入作业概要内容"></el-input>
+      <el-button type="primary" @click="handlePublishClick">发布</el-button>
+  </div>
+
+  <script src="assets/js/axios.min.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/vue.js"></script>
+  <script src="assets/js/elementui.js"></script>
+  <script src="viewmodels/homework-publish.js"></script>
+
+</body>
+
+</html>
