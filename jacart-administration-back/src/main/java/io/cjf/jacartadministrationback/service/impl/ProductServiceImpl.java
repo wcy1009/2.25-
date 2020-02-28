@@ -41,8 +41,8 @@ public class ProductServiceImpl implements ProductService {
         product.setRewordPoints(productCreateInDTO.getRewordPoints());
         product.setSortOrder(productCreateInDTO.getSortOrder());
         String description = productCreateInDTO.getDescription();
-        String productAbstract = description.substring(0, Math.min(100, description.length()));
-        product.setProductAbstract(productAbstract);
+
+        product.setProductAbstract(productCreateInDTO.getProductAbstract());
         productMapper.insertSelective(product);
 
 
@@ -51,6 +51,7 @@ public class ProductServiceImpl implements ProductService {
         ProductDetail productDetail=new ProductDetail();
         productDetail.setProductId(productId);
         productDetail.setDescription(productCreateInDTO.getDescription());
+
         List<String> othPicUrls = productCreateInDTO.getOthPicUrls();
         productDetail.setOtherPicUrls(JSON.toJSONString(othPicUrls));
         productDetailMapper.insertSelective(productDetail);
@@ -61,6 +62,7 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void update(ProductUpdateInDTO productUpdateInDTO) {
         Product product=new Product();
+        product.setProductId(productUpdateInDTO.getProductId());
         product.setDiscount(productUpdateInDTO.getDiscount());
         product.setPrice(productUpdateInDTO.getPrice());
         product.setProductName(productUpdateInDTO.getProductName());
@@ -70,8 +72,8 @@ public class ProductServiceImpl implements ProductService {
         product.setRewordPoints(productUpdateInDTO.getRewordPoints());
         product.setSortOrder(productUpdateInDTO.getSortOrder());
         String description = productUpdateInDTO.getDescription();
-        String productAbstract = description.substring(0, Math.min(100, description.length()));
-        product.setProductAbstract(productAbstract);
+
+        product.setProductAbstract(productUpdateInDTO.getProductAbstract());
         productMapper.updateByPrimaryKeySelective(product);
 
 
@@ -121,6 +123,7 @@ public class ProductServiceImpl implements ProductService {
         productShowOutDTO.setRewordPoints(product.getRewordPoints());
         productShowOutDTO.setSortOrder(product.getSortOrder());
         productShowOutDTO.setStockQuantity(product.getStockQuantity());
+        productShowOutDTO.setProductAbstract(product.getProductAbstract());
 
         productShowOutDTO.setDescription(productDetail.getDescription());
         String otherPicUrlsJson = productDetail.getOtherPicUrls();

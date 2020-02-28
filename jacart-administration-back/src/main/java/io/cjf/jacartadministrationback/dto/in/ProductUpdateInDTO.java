@@ -3,6 +3,7 @@ package io.cjf.jacartadministrationback.dto.in;
 import java.util.List;
 
 public class ProductUpdateInDTO {
+    private Integer  productId;
     private String productName;
     private Double price;
     private Double discount;
@@ -13,6 +14,23 @@ public class ProductUpdateInDTO {
     private Integer sortOrder;
     private String description;
     private List<String> othPicUrls;
+    private String productAbstract;
+
+    public String getProductAbstract() {
+        return productAbstract;
+    }
+
+    public void setProductAbstract(String productAbstract) {
+        this.productAbstract = productAbstract;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
 
     public String getProductName() {
         return productName;

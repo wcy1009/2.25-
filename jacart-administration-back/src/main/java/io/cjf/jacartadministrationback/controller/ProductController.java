@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/product")
+@CrossOrigin
 public class ProductController {
 
     @Autowired
@@ -38,7 +39,7 @@ public class ProductController {
         return integer;
     }
 
-    @PostMapping
+    @PostMapping("/update")
     public void update(@RequestBody ProductUpdateInDTO productUpdateInDTO){
         productService.update(productUpdateInDTO);
     }

@@ -14,6 +14,15 @@ public class ProductCreateInDTO {
     private Integer sortOrder;
     private String description;
     private List<String> othPicUrls;
+    private String productAbstract;
+
+    public String getProductAbstract() {
+        return productAbstract;
+    }
+
+    public void setProductAbstract(String productAbstract) {
+        this.productAbstract = productAbstract;
+    }
 
     public String getProductCode() {
         return productCode;

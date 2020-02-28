@@ -20,8 +20,15 @@ var app = new Vue({
         selectedOtherPics: [],
         otherPicUrls: [],
         mainFileList: [],
-        otherFileList: []
+        otherFileList: [],
+        productAbstract: ''
 
+    },
+    mounted() {
+        console.log('view mounted');
+        tinymce.init({
+            selector: '#mytextarea'
+        });
     },
     methods: {
         handleOnMainChange(val){
@@ -79,6 +86,7 @@ var app = new Vue({
             this.uploadOtherImage();
         },
         handleCreateClick(){
+            this.description = tinyMCE.activeEditor.getContent();
             this.createProduct();
         },
         createProduct() {
@@ -93,7 +101,8 @@ var app = new Vue({
                 rewordPoints: this.rewordPoints,
                 sortOrder: this.sortOrder,
                 description: this.description,
-                othPicUrls: this.otherPicUrls
+                othPicUrls: this.otherPicUrls,
+                productAbstract: this.productAbstract
             })
                 .then(function (response) {
                     console.log(response);
