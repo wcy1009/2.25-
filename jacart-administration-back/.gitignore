@@ -29,3 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+www/
+src/main/resources/application-exclude.properties
+
+
