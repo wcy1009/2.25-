@@ -13,4 +13,6 @@ public interface ProductService {
 
     Page<ProductListOutDTO> search(Integer pageNum);
 
+
+
 }
