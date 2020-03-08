@@ -4,7 +4,6 @@ package io.cjf.jacartadministrationback.controller;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.github.pagehelper.Page;
 import io.cjf.jacartadministrationback.constant.ClientExceptionConstant;
-import io.cjf.jacartadministrationback.dao.AdministratorMapper;
 import io.cjf.jacartadministrationback.dto.in.*;
 import io.cjf.jacartadministrationback.dto.out.*;
 import io.cjf.jacartadministrationback.enumeration.AdministratorStatus;
@@ -13,10 +12,18 @@ import io.cjf.jacartadministrationback.po.Administrator;
 import io.cjf.jacartadministrationback.service.AdministratorService;
 import io.cjf.jacartadministrationback.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.bind.DatatypeConverter;
+import java.security.SecureRandom;
+
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -27,6 +34,17 @@ public class AdministratorController {
 
     @Autowired
     private JWTUtil jwtUtil;
+
+    @Autowired
+    private SecureRandom secureRandom;
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Value("${spring.mail.username}")
+    private String fromEmail;
+
+    private Map<String, String> emailPwdResetCodeMap = new HashMap<>();
 
     @GetMapping("/login")
     public AdministratorLoginOutDTO  login(AdministratorLoginInDTO administratorLoginInDTO) throws ClientException {
@@ -79,11 +97,23 @@ public class AdministratorController {
 
     @GetMapping("/getPwdResetCode")
     public  String getPwdResetCodr(@RequestParam String email){
+        Administrator administrator = administratorService.getByEmail(email);
+        byte[] bytes = secureRandom.generateSeed(3);
+        String hex = DatatypeConverter.printHexBinary(bytes);
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(fromEmail);
+        message.setTo(email);
+        message.setSubject("jcart管理端管理员密码重置");
+        message.setText(hex);
+        mailSender.send(message);
+        //todo send messasge to MQ
+        emailPwdResetCodeMap.put(email, hex);
         return null;
     }
 
     @PostMapping("/resetPwd")
     public void  resePwd(@RequestBody AdministratorResetPwdInDTO administratorResetPwdInDTO){
+
 
     }
 

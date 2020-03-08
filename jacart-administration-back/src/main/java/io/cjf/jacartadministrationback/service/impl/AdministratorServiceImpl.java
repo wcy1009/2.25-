@@ -56,5 +56,11 @@ public class AdministratorServiceImpl implements AdministratorService {
         return page;
     }
 
+    @Override
+    public Administrator getByEmail(String email) {
+        Administrator administrator = administratorMapper.selectByEmail(email);
+        return administrator;
+    }
+
 
 }

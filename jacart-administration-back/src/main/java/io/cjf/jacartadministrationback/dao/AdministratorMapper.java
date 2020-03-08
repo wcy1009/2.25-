@@ -26,4 +26,6 @@ public interface AdministratorMapper {
     void deletes(@Param("administratorIds") List<Integer> administratorIds);
 
     Page<Administrator>   getList();
+
+    Administrator selectByEmail(String email);
 }
