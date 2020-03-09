@@ -2,6 +2,7 @@ package io.cjf.jacartadministrationback.service;
 
 import com.github.pagehelper.Page;
 import io.cjf.jacartadministrationback.dto.in.ProductCreateInDTO;
+import io.cjf.jacartadministrationback.dto.in.ProductSearchInDTO;
 import io.cjf.jacartadministrationback.dto.in.ProductUpdateInDTO;
 import io.cjf.jacartadministrationback.dto.out.PageOutDTO;
 import io.cjf.jacartadministrationback.dto.out.ProductListOutDTO;
@@ -19,7 +20,7 @@ public interface ProductService {
 
     void batchDelete(List<Integer> productIds);
 
-    Page<ProductListOutDTO> search(Integer pageNum);
+    Page<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO, Integer pageNum);
 
     ProductShowOutDTO  getById(Integer productId);
 

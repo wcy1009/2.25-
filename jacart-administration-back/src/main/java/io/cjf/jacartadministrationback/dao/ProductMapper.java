@@ -3,6 +3,7 @@ package io.cjf.jacartadministrationback.dao;
 import com.github.pagehelper.Page;
 import io.cjf.jacartadministrationback.dto.out.ProductListOutDTO;
 import io.cjf.jacartadministrationback.po.Product;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,5 +24,9 @@ public interface ProductMapper {
 
     void batchDelete(List<Integer> productIds);
 
-    Page<ProductListOutDTO>  search();
+    Page<ProductListOutDTO>  search(@Param("productCode") String productCode,
+                                    @Param("status") Byte status,
+                                    @Param("stockQuantity") Integer stockQuantity,
+                                    @Param("price") Double price,
+                                    @Param("productName") String productName);
 }
