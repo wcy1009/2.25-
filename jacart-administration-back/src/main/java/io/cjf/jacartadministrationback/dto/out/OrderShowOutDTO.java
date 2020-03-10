@@ -1,5 +1,7 @@
 package io.cjf.jacartadministrationback.dto.out;
 
+import io.cjf.jacartadministrationback.vo.OrderProductVO;
+
 import java.util.List;
 
 public class OrderShowOutDTO {
@@ -17,7 +19,16 @@ public class OrderShowOutDTO {
     private String invoiceAddress;
     private Double invoicePrice;
     private String comment;
-    private List<OrderProductShowOutDTO> orderProducts;
+    private List<OrderProductVO> orderProducts;
+    private Integer RewordPoints;
+
+    public Integer getRewordPoints() {
+        return RewordPoints;
+    }
+
+    public void setRewordPoints(Integer rewordPoints) {
+        RewordPoints = rewordPoints;
+    }
 
     public Long getOrderId() {
         return orderId;
@@ -131,11 +142,11 @@ public class OrderShowOutDTO {
         this.comment = comment;
     }
 
-    public List<OrderProductShowOutDTO> getOrderProducts() {
+    public List<OrderProductVO> getOrderProducts() {
         return orderProducts;
     }
 
-    public void setOrderProducts(List<OrderProductShowOutDTO> orderProducts) {
+    public void setOrderProducts(List<OrderProductVO> orderProducts) {
         this.orderProducts = orderProducts;
     }
 }

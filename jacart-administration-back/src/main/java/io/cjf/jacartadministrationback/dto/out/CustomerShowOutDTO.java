@@ -1,7 +1,7 @@
 package io.cjf.jacartadministrationback.dto.out;
 
 public class CustomerShowOutDTO {
-    private String customerId;
+    private Integer customerId;
     private String username;
     private String realName;
     private String mobile;
@@ -11,12 +11,39 @@ public class CustomerShowOutDTO {
     private Boolean newSubscribed;
     private Integer rewordPoints;
     private Integer defaultAddressId;
+    private String AvatarUrl;
+    private Boolean  NewsSubscribed;
+    private  String DefaultAddress;
 
-    public String getCustomerId() {
+    public String getDefaultAddress() {
+        return DefaultAddress;
+    }
+
+    public void setDefaultAddress(String defaultAddress) {
+        DefaultAddress = defaultAddress;
+    }
+
+    public String getAvatarUrl() {
+        return AvatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        AvatarUrl = avatarUrl;
+    }
+
+    public Boolean getNewsSubscribed() {
+        return NewsSubscribed;
+    }
+
+    public void setNewsSubscribed(Boolean newsSubscribed) {
+        NewsSubscribed = newsSubscribed;
+    }
+
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 

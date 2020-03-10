@@ -5,6 +5,24 @@ public class OrderSearchInDTO {
     private String customerName;
     private Byte status;
     private Double totalPrice;
+    private Long StartTimestamp;
+    private Long EndTimestamp;
+
+    public Long getStartTimestamp() {
+        return StartTimestamp;
+    }
+
+    public void setStartTimestamp(Long startTimestamp) {
+        StartTimestamp = startTimestamp;
+    }
+
+    public Long getEndTimestamp() {
+        return EndTimestamp;
+    }
+
+    public void setEndTimestamp(Long endTimestamp) {
+        EndTimestamp = endTimestamp;
+    }
 
     public Long getOrderId() {
         return orderId;
