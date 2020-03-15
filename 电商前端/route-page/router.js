@@ -10,6 +10,7 @@ const routes = [
 
     { path: '/administrator/index', component: AdministratorIndexRoutePage },
     { path: '/administrator/create', component: AdministratorCreateRoutePage },
+    { path: '/administrator/update/:administratorId', component: AdministratorUpdateRoutePage },
 ];
 
 const router = new VueRouter({
