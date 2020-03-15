@@ -3,9 +3,13 @@ const routes = [
     { path: '/product/update/:productId', component: ProductUpdateRoutePage },
 
     { path: '/customer/search', component: CustomerSearchRoutePage },
+
     { path: '/order/search', component: OrderSearchRoutePage },
+
     { path: '/return/search', component: ReturnSearchRoutePage },
-    { path: '/administrator/index', component: AdministratorIndexRoutePage }
+
+    { path: '/administrator/index', component: AdministratorIndexRoutePage },
+    { path: '/administrator/create', component: AdministratorCreateRoutePage },
 ];
 
 const router = new VueRouter({
